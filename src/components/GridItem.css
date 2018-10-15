@@ -1,0 +1,11 @@
+.GridItem {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.ColorPicker {
+  display: inline-block;
+}
