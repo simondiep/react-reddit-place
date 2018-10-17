@@ -1,29 +1,57 @@
 import React from "react";
-import ColorPicker from "rc-color-picker";
+import { CompactPicker } from "react-color";
 import { STORAGE_URL } from "../Constants";
 import "./GridItem.css";
-import "rc-color-picker/assets/index.css";
 
-const GridItem = props => (
-  <ColorPicker
-    className="ColorPicker"
-    color={props.color ? props.color : "white"}
-    onClose={onColorPickerClose.bind(null, props.rowIndex, props.columnIndex)}
-    placement="topLeft"
-    enableAlpha={false}
-  >
-    <div className="GridItem" />
-  </ColorPicker>
-);
+class GridItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      color: props.color,
+      displayColorPicker: false,
+    };
+  }
 
-function onColorPickerClose(rowIndex, columnIndex, { color }) {
-  fetch(STORAGE_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json; charset=utf-8",
-    },
-    body: JSON.stringify({ rowIndex, columnIndex, color }),
-  });
+  handleClick = () => {
+    this.setState({ displayColorPicker: !this.state.displayColorPicker });
+  };
+
+  handleClose = () => {
+    this.setState({ displayColorPicker: false });
+  };
+
+  onColorChange = ({ hex }) => {
+    this.setState({ color: hex });
+  };
+
+  onColorPickerClose = () => {
+    const { rowIndex, columnIndex } = this.props;
+    const color = this.state.color;
+    fetch(STORAGE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body: JSON.stringify({ rowIndex, columnIndex, color }),
+    });
+  };
+
+  render() {
+    return (
+      <div className="GridItem" onClick={this.handleClick} style={{ backgroundColor: this.state.color }}>
+        {this.state.displayColorPicker ? (
+          <div className="GridItemPopover">
+            <div className="GridItemCover" onClick={this.handleClose} />
+            <CompactPicker
+              color={this.state.color}
+              onChange={this.onColorChange}
+              onChangeComplete={this.onColorPickerClose}
+            />
+          </div>
+        ) : null}
+      </div>
+    );
+  }
 }
 
 export default GridItem;

@@ -4,7 +4,6 @@
   "private": true,
   "homepage": "http://simondiep.github.io/react-reddit-place",
   "dependencies": {
-    "rc-color-picker": "^1.2.6",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-scripts": "2.0.5"
