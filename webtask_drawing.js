@@ -53,7 +53,7 @@ function createInitialDrawing() {
   for (var row = 0; row < HEIGHT; row++) {
     INITIAL_DATA[row] = [];
     for (var column = 0; column < WIDTH; column++) {
-      INITIAL_DATA[row].push("");
+      INITIAL_DATA[row].push("#ffffff");
     }
   }
   return INITIAL_DATA;

@@ -5,6 +5,7 @@
   "homepage": "http://simondiep.github.io/react-reddit-place",
   "dependencies": {
     "react": "^16.5.2",
+    "react-color": "^2.14.1",
     "react-dom": "^16.5.2",
     "react-scripts": "2.0.5"
   },
