@@ -8,14 +8,15 @@ const GridItem = props => (
   <ColorPicker
     className="ColorPicker"
     color={props.color ? props.color : "white"}
-    onChange={onColorChange.bind(null, props.rowIndex, props.columnIndex)}
+    onClose={onColorPickerClose.bind(null, props.rowIndex, props.columnIndex)}
     placement="topLeft"
+    enableAlpha={false}
   >
     <div className="GridItem" />
   </ColorPicker>
 );
 
-function onColorChange(rowIndex, columnIndex, { color }) {
+function onColorPickerClose(rowIndex, columnIndex, { color }) {
   fetch(STORAGE_URL, {
     method: "POST",
     headers: {

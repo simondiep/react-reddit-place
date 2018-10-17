@@ -6,6 +6,9 @@
   padding: 0;
 }
 
-.ColorPicker {
-  display: inline-block;
+.GridItem:hover {
+  height: 18px;
+  width: 18px;
+  border: 1px solid black;
+  cursor: pointer;
 }
