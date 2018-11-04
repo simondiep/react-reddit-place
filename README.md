@@ -2,6 +2,8 @@
 
 React based implementation of Reddit Place.
 
+![demo preview](./preview.gif?raw=true)
+
 ## How to Start
 
 `npm i && npm start`
